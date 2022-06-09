@@ -16,6 +16,7 @@ import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
+  /*package*/ final ConceptDescriptor myConceptButtonExport = createDescriptorForButtonExport();
   /*package*/ final ConceptDescriptor myConceptDescriptionModel = createDescriptorForDescriptionModel();
   /*package*/ final ConceptDescriptor myConceptFamilyModel = createDescriptorForFamilyModel();
   /*package*/ final ConceptDescriptor myConceptHead = createDescriptorForHead();
@@ -60,13 +61,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptDescriptionModel, myConceptFamilyModel, myConceptHead, myConceptInputBody, myConceptInputValue, myConceptInputsBody, myConceptInputsStatement, myConceptLayerBody, myConceptLayerValue, myConceptLayersBody, myConceptLayersStatement, myConceptMLDocument, myConceptModelBody, myConceptModelStatement, myConceptNameInput, myConceptNameLayer, myConceptNameModel, myConceptNameOutput, myConceptOutputBody, myConceptOutputValue, myConceptOutputsBody, myConceptOutputsStatement, myConceptParams, myConceptParamsLayer, myConceptTypeInput, myConceptTypeModel, myConceptTypeOutput);
+    return Arrays.asList(myConceptButtonExport, myConceptDescriptionModel, myConceptFamilyModel, myConceptHead, myConceptInputBody, myConceptInputValue, myConceptInputsBody, myConceptInputsStatement, myConceptLayerBody, myConceptLayerValue, myConceptLayersBody, myConceptLayersStatement, myConceptMLDocument, myConceptModelBody, myConceptModelStatement, myConceptNameInput, myConceptNameLayer, myConceptNameModel, myConceptNameOutput, myConceptOutputBody, myConceptOutputValue, myConceptOutputsBody, myConceptOutputsStatement, myConceptParams, myConceptParamsLayer, myConceptTypeInput, myConceptTypeModel, myConceptTypeOutput);
   }
 
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
     switch (myIndexSwitch.index(id)) {
+      case LanguageConceptSwitch.ButtonExport:
+        return myConceptButtonExport;
       case LanguageConceptSwitch.DescriptionModel:
         return myConceptDescriptionModel;
       case LanguageConceptSwitch.FamilyModel:
@@ -135,6 +138,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     return myIndexSwitch.index(c);
   }
 
+  private static ConceptDescriptor createDescriptorForButtonExport() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("Machine_Learnig_Program", "ButtonExport", 0xf03daa50cd2c41b9L, 0x926581a1c1e4c00cL, 0x16e61662a516fc48L);
+    b.class_(false, false, false);
+    b.origin("r:b37d5e84-f823-4791-a49e-0e8658d72e25(Machine_Learnig_Program.structure)/1650030926410218568");
+    b.version(3);
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForDescriptionModel() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("Machine_Learnig_Program", "DescriptionModel", 0xf03daa50cd2c41b9L, 0x926581a1c1e4c00cL, 0x2a9f739d746c38d4L);
     b.class_(false, false, false);
